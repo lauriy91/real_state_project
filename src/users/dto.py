@@ -16,7 +16,6 @@ class UserRequestDTO(BaseModel):
 
 class UserUpdateDTO(BaseModel):
     name: Optional[str] = None
-    email: Optional[EmailStr] = None
     password: Optional[str] = Field(default=None, min_length=8)
     city: Optional[str] = None
     phone: Optional[str] = None
