@@ -16,10 +16,10 @@ Base de datatos: Mysql
 
 ### Endpoints disponibles ###
 
-C --> POST /inmuebles
-R --> GET /inmuebles
-U --> UPDATE /inmuebles
-D --> DELETE /inmuebles
+C --> POST /property
+R --> GET /property
+U --> UPDATE /property
+D --> DELETE /property
 
 Body {
     status:
