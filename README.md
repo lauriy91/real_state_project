@@ -23,7 +23,9 @@ Base de datatos: Mysql
   - PATCH /properties/{id}
   - DELETE /properties/{id}
 
-  image.png
+  ![alt text](image-1.png)
+  ![alt text](image.png)
+  ![alt text](image-2.png)
   
 
 - Likes
