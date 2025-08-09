@@ -23,10 +23,6 @@ Base de datatos: Mysql
   - PATCH /properties/{id}
   - DELETE /properties/{id}
 
-  ![alt text](image-1.png)
-  ![alt text](image.png)
-  ![alt text](image-2.png)
-  
 
 - Likes
   - POST /likes (toggle: crea o elimina like si ya existe)
@@ -67,3 +63,19 @@ Base de datatos: Mysql
   - Paginación, filtros por `status` visible (pre_venta|en_venta|vendido), `city`, `year_from/year_to`
   - Logs estructurados, trazabilidad por request-id
   - Tests unitarios de repos y servicios
+
+# EVIDENCIA
+
+  ### Filtros inmuebles
+
+  ![alt text](image-1.png)
+  ![alt text](image.png)
+  ![alt text](image-2.png)
+
+  ### Likes
+  
+  ![alt text](image-3.png)
+
+  ### Ejercicio de arrays
+
+  ![alt text](image-4.png)
