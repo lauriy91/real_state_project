@@ -4,6 +4,7 @@ import importlib
 from src.users.router import ROUTES as USER_ROUTES
 from src.properties.router import ROUTES as PROPERTY_ROUTES
 from src.likes.router import ROUTES as LIKE_ROUTES
+from src.auth.router import ROUTES as AUTH_ROUTES
 
 RawRoute = Tuple[str, str, Any]
 Route = Tuple[str, str, Callable]
@@ -27,4 +28,5 @@ ROUTES: List[Route] = _normalize_routes([
     *USER_ROUTES,
     *PROPERTY_ROUTES,
     *LIKE_ROUTES,
+    *AUTH_ROUTES,
 ])
