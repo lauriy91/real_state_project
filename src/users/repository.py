@@ -38,7 +38,14 @@ def exists_email(email: str, exclude_id: Optional[int] = None) -> bool:
 
 def insert_user(data: Dict[str, Any]) -> int:
     columns = ["name", "email", "password", "city", "phone", "active"]
-    values = [data.get("name"), data.get("email"), data.get("password"), data.get("city"), data.get("phone"), data.get("active", True)]
+    values = [
+        data.get("name"),
+        data.get("email"),
+        data.get("password"),
+        data.get("city"),
+        data.get("phone"),
+        data.get("active", True),
+    ]
     placeholders = ", ".join(["%s"] * len(columns))
     cols_sql = ", ".join(columns)
     sql = f"INSERT INTO {TABLE} ({cols_sql}) VALUES ({placeholders})"
