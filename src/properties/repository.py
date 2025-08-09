@@ -1,10 +1,8 @@
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from src.db.connection import fetch_all, get_connection
 
-
 TABLE = "properties"
-
 
 def find_all(limit: int = 100, offset: int = 0) -> List[Dict]:
     sql = f"""
@@ -15,7 +13,6 @@ def find_all(limit: int = 100, offset: int = 0) -> List[Dict]:
     """
     return fetch_all(sql, (limit, offset))
 
-
 def find_by_id(property_id: int) -> Optional[Dict]:
     sql = f"""
         SELECT id, status, price, address, city, description, image_url, property_type, property_subtype, property_size
@@ -25,7 +22,6 @@ def find_by_id(property_id: int) -> Optional[Dict]:
     rows = fetch_all(sql, (property_id,))
     return rows[0] if rows else None
 
-
 def exists_id(property_id: int, exclude_id: Optional[int] = None) -> bool:
     if exclude_id is None:
         sql = f"SELECT 1 FROM {TABLE} WHERE id = %s LIMIT 1"
@@ -34,7 +30,6 @@ def exists_id(property_id: int, exclude_id: Optional[int] = None) -> bool:
         sql = f"SELECT 1 FROM {TABLE} WHERE id = %s AND id <> %s LIMIT 1"
         rows = fetch_all(sql, (property_id, exclude_id))
     return bool(rows)
-
 
 def insert_property(data: Dict[str, Any]) -> int:
     columns = [
@@ -67,7 +62,6 @@ def insert_property(data: Dict[str, Any]) -> int:
             cur.execute(sql, values)
             return int(cur.lastrowid)
 
-
 def update_property(property_id: int, data: Dict[str, Any]) -> int:
     if not data:
         return 0
@@ -95,7 +89,6 @@ def update_property(property_id: int, data: Dict[str, Any]) -> int:
         with conn.cursor() as cur:
             cur.execute(sql, params)
             return int(cur.rowcount)
-
 
 def delete_property(property_id: int) -> int:
     sql = f"DELETE FROM {TABLE} WHERE id = %s"

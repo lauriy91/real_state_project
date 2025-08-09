@@ -1,7 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
 
-
 class PropertyRequestDTO(BaseModel):
     status: str
     price: float
@@ -17,7 +16,6 @@ class PropertyRequestDTO(BaseModel):
         anystr_strip_whitespace = True
         extra = "forbid"
 
-
 class PropertyUpdateDTO(BaseModel):
     status: Optional[str] = None
     price: Optional[float] = None
@@ -32,7 +30,6 @@ class PropertyUpdateDTO(BaseModel):
     class Config:
         anystr_strip_whitespace = True
         extra = "forbid"
-
 
 class PropertyResponseDTO(BaseModel):
     id: int

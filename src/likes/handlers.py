@@ -3,7 +3,6 @@ from http import HTTPStatus
 from src.likes.dto import LikeRequestDTO, DislikeRequestDTO, LikeResponseDTO
 from src.utils.json_manager import read_json_body, write_json_response
 
-
 def create_like(handler):
     data = read_json_body(handler)
     dto = LikeRequestDTO(**data)

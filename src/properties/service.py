@@ -7,7 +7,6 @@ from src.properties.dto import (
 )
 from src.properties import repository
 
-
 def list_properties(limit: int = 20, offset: int = 0) -> List[PropertyResponseDTO]:
     rows = repository.find_all(limit=limit, offset=offset)
     return [
@@ -26,7 +25,6 @@ def list_properties(limit: int = 20, offset: int = 0) -> List[PropertyResponseDT
         for r in rows
     ]
 
-
 def get_property(property_id: int) -> Optional[PropertyResponseDTO]:
     row = repository.find_by_id(property_id)
     if not row:
@@ -43,7 +41,6 @@ def get_property(property_id: int) -> Optional[PropertyResponseDTO]:
         property_subtype=row["property_subtype"],
         property_size=row["property_size"],
     )
-
 
 def create_property(dto: PropertyRequestDTO) -> PropertyResponseDTO:
     if repository.exists_id(dto.id):
@@ -73,7 +70,6 @@ def create_property(dto: PropertyRequestDTO) -> PropertyResponseDTO:
         property_subtype=dto.property_subtype,
         property_size=dto.property_size,
     )
-
 
 def update_property(
     property_id: int, dto: PropertyUpdateDTO

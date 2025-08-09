@@ -1,7 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel, EmailStr, Field
 
-
 class UserRequestDTO(BaseModel):
     name: str
     email: EmailStr
@@ -13,7 +12,6 @@ class UserRequestDTO(BaseModel):
         anystr_strip_whitespace = True
         extra = "forbid"
 
-
 class UserUpdateDTO(BaseModel):
     name: Optional[str] = None
     password: Optional[str] = Field(default=None, min_length=8)
@@ -23,7 +21,6 @@ class UserUpdateDTO(BaseModel):
     class Config:
         anystr_strip_whitespace = True
         extra = "forbid"
-
 
 class UserResponseDTO(BaseModel):
     id: int

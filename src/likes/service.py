@@ -1,8 +1,5 @@
-from typing import Dict, List, Optional
-
 from src.likes.dto import LikeRequestDTO, DislikeRequestDTO, LikeResponseDTO
 from src.likes import repository
-
 
 def create_like(dto: LikeRequestDTO) -> LikeResponseDTO:
     existing_id = repository.exists_id(dto.user_id, dto.property_id)

@@ -7,17 +7,14 @@ from src.properties.dto import (
 )
 from src.utils.json_manager import read_json_body, write_json_response
 
-
 def list_properties(handler):
     # building
     write_json_response(handler, {"items": []})
-
 
 def get_property(handler, params):
     property_id = int(params["id"])
     # building
     write_json_response(handler, {"id": property_id})
-
 
 def create_property(handler):
     data = read_json_body(handler)
@@ -37,7 +34,6 @@ def create_property(handler):
     )
     write_json_response(handler, created.dict(), status=HTTPStatus.CREATED)
 
-
 def update_property(handler, params):
     user_id = int(params["id"])
     data = read_json_body(handler)
@@ -56,7 +52,6 @@ def update_property(handler, params):
         property_size=dto.property_size or "",
     )
     write_json_response(handler, updated.dict())
-
 
 def delete_property(handler, params):
     user_id = int(params["id"])

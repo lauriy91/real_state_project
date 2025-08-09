@@ -3,17 +3,14 @@ from http import HTTPStatus
 from src.users.dto import UserRequestDTO, UserUpdateDTO, UserResponseDTO
 from src.utils.json_manager import read_json_body, write_json_response
 
-
 def list_users(handler):
     # building
     write_json_response(handler, {"items": []})
-
 
 def get_user(handler, params):
     user_id = int(params["id"])
     # building
     write_json_response(handler, {"id": user_id})
-
 
 def create_user(handler):
     data = read_json_body(handler)
@@ -23,7 +20,6 @@ def create_user(handler):
         id=1, name=dto.name, email=dto.email, city=dto.city, phone=dto.phone
     )
     write_json_response(handler, created.dict(), status=HTTPStatus.CREATED)
-
 
 def update_user(handler, params):
     user_id = int(params["id"])
@@ -38,7 +34,6 @@ def update_user(handler, params):
         phone=dto.phone or "",
     )
     write_json_response(handler, updated.dict())
-
 
 def delete_user(handler, params):
     user_id = int(params["id"])

@@ -1,10 +1,7 @@
-from typing import Any, Dict, List, Optional, Tuple
-
+from typing import Any, Dict, Optional
 from src.db.connection import fetch_all, get_connection
 
-
 TABLE = "likes"
-
 
 def exists_id(user_id: int, property_id: int, exclude_id: Optional[int] = None) -> bool:
     if exclude_id is None:
@@ -14,7 +11,6 @@ def exists_id(user_id: int, property_id: int, exclude_id: Optional[int] = None) 
         sql = f"SELECT 1 FROM {TABLE} WHERE user_id = %s AND property_id = %s AND id <> %s LIMIT 1"
         rows = fetch_all(sql, (user_id, property_id, exclude_id))
     return bool(rows)
-
 
 def insert_like(data: Dict[str, Any]) -> int:
     columns = [
@@ -33,7 +29,6 @@ def insert_like(data: Dict[str, Any]) -> int:
             cur.execute(sql, values)
             return int(cur.lastrowid)
 
-
 def insert_dislike(data: Dict[str, Any]) -> int:
     columns = [
         "user_id",
@@ -50,7 +45,6 @@ def insert_dislike(data: Dict[str, Any]) -> int:
         with conn.cursor() as cur:
             cur.execute(sql, values)
             return int(cur.lastrowid)
-
 
 def delete_like(like_id: int) -> int:
     sql = f"DELETE FROM {TABLE} WHERE id = %s"

@@ -3,7 +3,6 @@ from typing import Dict, List, Optional
 from src.users.dto import UserRequestDTO, UserUpdateDTO, UserResponseDTO
 from src.users import repository
 
-
 def list_users(limit: int = 200, offset: int = 0) -> List[UserResponseDTO]:
     rows = repository.find_all(limit=limit, offset=offset)
     return [
@@ -17,7 +16,6 @@ def list_users(limit: int = 200, offset: int = 0) -> List[UserResponseDTO]:
         for r in rows
     ]
 
-
 def get_user(user_id: int) -> Optional[UserResponseDTO]:
     row = repository.find_by_id(user_id)
     if not row:
@@ -29,7 +27,6 @@ def get_user(user_id: int) -> Optional[UserResponseDTO]:
         city=row.get("city"),
         phone=row.get("phone"),
     )
-
 
 def create_user(dto: UserRequestDTO) -> UserResponseDTO:
     if repository.exists_email(dto.email):
@@ -52,7 +49,6 @@ def create_user(dto: UserRequestDTO) -> UserResponseDTO:
         phone=dto.phone,
     )
 
-
 def update_user(user_id: int, dto: UserUpdateDTO) -> Optional[UserResponseDTO]:
     data: Dict = {}
     if dto.name is not None:
@@ -68,7 +64,6 @@ def update_user(user_id: int, dto: UserUpdateDTO) -> Optional[UserResponseDTO]:
     if updated <= 0:
         return None
     return get_user(user_id)
-
 
 def delete_user(user_id: int) -> bool:
     deleted = repository.delete_user(user_id)
