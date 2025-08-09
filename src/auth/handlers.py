@@ -1,6 +1,6 @@
 from http import HTTPStatus
 
-from src.auth.dto import LoginRequestDTO
+from src.auth.dto import LoginRequestDTO, SignupRequestDTO
 from src.auth import service
 from src.utils.json_manager import read_json_body, write_json_response
 from src.utils.error import write_error, AppError
@@ -19,5 +19,12 @@ def login(handler):
 
 def logout(handler):
     write_json_response(handler, {"ok": True}, status=HTTPStatus.OK)
+
+
+def signup(handler):
+    data = read_json_body(handler)
+    dto = SignupRequestDTO(**data)
+    resp = service.signup(dto)
+    write_json_response(handler, resp.dict(), status=HTTPStatus.CREATED)
 
 

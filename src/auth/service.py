@@ -3,7 +3,12 @@ import time
 import bcrypt
 import jwt
 
-from src.auth.dto import LoginRequestDTO, LoginResponseDTO
+from src.auth.dto import (
+    LoginRequestDTO,
+    LoginResponseDTO,
+    SignupRequestDTO,
+    SignupResponseDTO,
+)
 from src.auth import repository
 
 class InvalidCredentialsError(ValueError):
@@ -32,6 +37,13 @@ def login(dto: LoginRequestDTO) -> LoginResponseDTO:
     token = _create_access_token(user_id=user["id"])
     return LoginResponseDTO(access_token=token)
 
-
 def logout(token: str) -> bool:
     return True
+
+def hash_password(plain: str) -> str:
+    return bcrypt.hashpw(plain.encode(), bcrypt.gensalt()).decode()
+
+def signup(dto: SignupRequestDTO) -> SignupResponseDTO:
+    pwd_hash = hash_password(dto.password)
+    user_id = repository.insert_auth_user(dto.username, dto.email, pwd_hash)
+    return SignupResponseDTO(id=user_id, username=dto.username, email=dto.email)

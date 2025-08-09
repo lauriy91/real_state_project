@@ -1,0 +1,9 @@
+{
+  "status": ["pre_venta", "en_venta", "vendido"],
+  "city": "bucaramanga",
+  "year_from": 2020,
+  "year_to": 2025,
+  "page": 1,
+  "page_size": 20
+}
+
