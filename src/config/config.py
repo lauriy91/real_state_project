@@ -10,9 +10,9 @@ class DBConfig:
     password: str
 
 def get_db_config() -> DBConfig:
-    host = os.getenv("DB_HOST", "localhost")
-    port = int(os.getenv("DB_PORT", "3306"))
-    name = os.getenv("DB_NAME", "habi")
-    user = os.getenv("DB_USER", "root")
+    host = os.getenv("DB_HOST", "")
+    port = int(os.getenv("DB_PORT", "3309"))
+    name = os.getenv("DB_NAME", "habi_db")
+    user = os.getenv("DB_USER", "pruebas")
     password = os.getenv("DB_PASSWORD", "")
     return DBConfig(host=host, port=port, name=name, user=user, password=password)

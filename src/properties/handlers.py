@@ -15,12 +15,22 @@ def list_properties(handler):
     city = qs.get("city", [None])[0]
     year_from = qs.get("year_from", [None])[0]
     year_to = qs.get("year_to", [None])[0]
+    year_exact = qs.get("year", [None])[0]
+
+    yf = int(year_from) if year_from and year_from.isdigit() else None
+    yt = int(year_to) if year_to and year_to.isdigit() else None
+    ye = int(year_exact) if year_exact and year_exact.isdigit() else None
+
+    # Si viene year exacto, se impone como from/to iguales
+    if ye is not None:
+        yf = ye
+        yt = ye
 
     filters = {
         "status": status,
         "city": city,
-        "year_from": int(year_from) if year_from and year_from.isdigit() else None,
-        "year_to": int(year_to) if year_to and year_to.isdigit() else None,
+        "year_from": yf,
+        "year_to": yt,
     }
 
     items = [p.dict() for p in service.list_properties(filters=filters)]

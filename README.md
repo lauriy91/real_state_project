@@ -23,6 +23,9 @@ Base de datatos: Mysql
   - PATCH /properties/{id}
   - DELETE /properties/{id}
 
+  image.png
+  
+
 - Likes
   - POST /likes (toggle: crea o elimina like si ya existe)
   - DELETE /likes/{id}
@@ -33,7 +36,7 @@ Base de datatos: Mysql
   - POST /logout
 
 ### Notas de modelado con la BD existente
-- Usuarios: se utiliza `auth_user` (Django) para autenticación. `users` se mantiene como módulo opcional para perfil extendido.
+- Usuarios: se utiliza `auth_user` para autenticación. `users` se mantiene como módulo opcional para perfil extendido.
 - Inmuebles: tabla `property`. El estado visible se calcula como el último registro de `status_history` por `property_id`, unido a `status.name`.
 
 ### Mejoras opcionales (plan a futuro)
